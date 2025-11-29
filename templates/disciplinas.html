@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Cadastro de Disciplinas{% endblock %}
+
+{% block page_content %}
+
+
+<div class="page-header">
+    <h1>Cadastro de Disciplinas</h1>
+</div>
+
+
+{{ wtf.quick_form(form) }}
+
+<hr>
+
+<h2>Relação de Disciplinas Cadastradas</h2>
+
+{% if disciplinas %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome da Disciplina</th>
+                <th>Semestre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in disciplinas %}
+            <tr>
+                <td>{{ d.nome }}</td>
+                <td>{{ d.semestre }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhuma disciplina cadastrada ainda.</p>
+{% endif %}
+
+{% endblock %}
